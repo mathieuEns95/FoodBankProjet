@@ -14,6 +14,5 @@
 Route::get('/',"HomeController@index")->name("home.index");
 Route::get('/nouveau-migrant',"HomeController@new_migrant")->name("home.new");
 Route::post('/ajouter-migrant',"HomeController@add_migrant")->name("home.add_migrant");
-
 Route::get('/qr-code/{code}',"HomeController@show_qr_code")->name("home.show_code");
 Route::get('/test',"HomeController@test");

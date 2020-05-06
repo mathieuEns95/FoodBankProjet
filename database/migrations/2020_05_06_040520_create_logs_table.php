@@ -17,7 +17,7 @@ class CreateLogsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('action');
-            $table->string('details');
+            $table->text('details');
             $table->string('date_action');
             $table->timestamps();
         });

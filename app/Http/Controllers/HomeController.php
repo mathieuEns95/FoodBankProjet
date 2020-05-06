@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Log;
 use App\Migrant;
 use App\Utils\Api;
 use App\Utils\ApiConst;
@@ -37,7 +38,7 @@ class HomeController extends Controller
     	]);
 
     	extract($request->all());
-    	Migrant::create([
+    	$user = Migrant::create([
     		'nom' => $nom,
     		'prenom' => $prenom,
     		'cni' => $cni,
@@ -49,12 +50,24 @@ class HomeController extends Controller
     		'date_creation' => time(),
     	]);
 
+
+        Log::create([
+            'user_id' => $user->id,
+            'action' => "Nouveau migrant.",
+            'details' => json_encode($user),
+            'date_action' => time()
+        ]);
+
     	// générer le pdf contenant le QR code du migrant ...
 
     	return redirect()->route('home.show_code', ['code' => $cni]);
     }
 
     public function show_qr_code($code){
+        if(is_null($code)){
+            return redirect()->route('home.new');
+        }
+
     	$data = [
     		'title' => "Visualisation du QR Code d'un migrant | ",
     		'url' => ApiConst::URL.$code,
@@ -83,5 +96,9 @@ class HomeController extends Controller
 
     	// Finally, you can download the file using download function
     	return $pdf->download('customers.pdf');
+    }
+
+    public function sors_vite(){
+        return redirect()->route('home.index');
     }
 }
