@@ -21,7 +21,9 @@ class CreateMigrantsTable extends Migration
             $table->string("telephone");
             $table->string("adresse");
             $table->integer("nbre_retraits");
+            $table->integer("solvability");
             $table->string("date_creation");
+            $table->string("token")->nullable();
             $table->timestamps();
         });
     }
