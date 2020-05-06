@@ -17,6 +17,7 @@ class CreateMigrantsTable extends Migration
             $table->increments('id');
             $table->string("cni");
             $table->string("nom");
+            $table->string("email");
             $table->string("prenom");
             $table->string("telephone");
             $table->string("adresse");

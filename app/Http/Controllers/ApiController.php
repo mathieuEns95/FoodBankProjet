@@ -47,17 +47,9 @@ class ApiController extends Controller
     		exit();
     	}
 
-    	// if(is_null($migrant->token)){
-    	// 	return Api::respond(ApiStatus::err("Missing token"));
-    	// 	exit();
-    	// }
-    	// if($migrant->token < time()){
-    	// 	return Api::respond(ApiStatus::err("Token expired."));
-    	// 	exit();
-    	// }
-
     	$migrant->update([
     		'nbre_retraits' => $migrant->nbre_retraits - 1,
+    		'token' => null,
     	]);
 
     	Log::create([
