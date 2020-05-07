@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-primary">
+                    <div class="card-header card-header-primary" style="background:green;">
                         <h4 class="card-title">Nouveau migrant</h4>
                         <p class="card-category">Saisissez les informations du nouveau migrant</p>
                     </div>
@@ -23,7 +23,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Nom</label>
-                                        <input type="text" class="form-control{{ $errors->has('nom') ? ' is-invalid' : '' }}" name="nom" required>
+                                        <input type="text"
+                                        class="form-control{{ $errors->has('nom') ? ' is-invalid' : '' }}"
+                                        name="nom" required>
                                     </div>
                                     @if ($errors->has('nom'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -34,7 +36,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Prénom</label>
-                                        <input type="text" class="form-control{{ $errors->has('prenom') ? ' is-invalid' : '' }}" name="prenom" required>
+                                        <input type="text"
+                                        class="form-control{{ $errors->has('prenom') ? ' is-invalid' : '' }}"
+                                        name="prenom" required>
                                     </div>
                                     @if ($errors->has('prenom'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -47,7 +51,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">N° CNI</label>
-                                        <input type="text" class="form-control{{ $errors->has('cni') ? ' is-invalid' : '' }}" name="cni" required>
+                                        <input type="text"
+                                        class="form-control{{ $errors->has('cni') ? ' is-invalid' : '' }}"
+                                        name="cni" required>
                                     </div>
                                     @if ($errors->has('cni'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -58,7 +64,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Adresse Email</label>
-                                        <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" required>
+                                        <input type="email"
+                                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                        name="email" required>
                                     </div>
                                     @if ($errors->has('email'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -71,7 +79,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Telephone</label>
-                                        <input type="text" class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}" name="telephone" required>
+                                        <input type="text"
+                                        class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}"
+                                        name="telephone" required>
                                     </div>
                                     @if ($errors->has('telephone'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -82,7 +92,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Adresse</label>
-                                        <input type="text" class="form-control{{ $errors->has('adresse') ? ' is-invalid' : '' }}" name="adresse" required>
+                                        <input type="text"
+                                        class="form-control{{ $errors->has('adresse') ? ' is-invalid' : '' }}"
+                                        name="adresse" required>
                                     </div>
                                     @if ($errors->has('adresse'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -91,7 +103,11 @@
                                     @endif
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-right">Créer migrant</button>
+                            <button type="submit"
+                                 class="btn btn-primary pull-right"
+                                 style="background:green;">
+                                    Créer migrant
+                            </button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
