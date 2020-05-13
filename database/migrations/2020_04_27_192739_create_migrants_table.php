@@ -15,12 +15,13 @@ class CreateMigrantsTable extends Migration
     {
         Schema::create('migrants', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("cni");
+            $table->string("cni")->nullable();
             $table->string("nom");
-            $table->string("email");
+            $table->string("email")->nullable();
             $table->string("prenom");
-            $table->string("telephone");
+            $table->string("telephone")->nullable();
             $table->string("adresse");
+            $table->string("qr_code");
             $table->integer("nbre_retraits");
             $table->integer("solvability");
             $table->string("date_creation");

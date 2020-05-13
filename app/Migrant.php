@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Migrant extends Model
 {
     protected $fillable = [
-        'cni', 'nom','email', 'prenom', 'telephone', 'adresse', 'nbre_retraits', 'solvability', 'date_creation', 'token',
+        'cni', 'nom','email', 'prenom', 'telephone', 'adresse', 'qr_code', 'nbre_retraits', 'solvability', 'date_creation', 'token',
     ];
 
     protected $hidden = [

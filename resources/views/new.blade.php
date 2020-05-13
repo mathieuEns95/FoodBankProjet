@@ -15,7 +15,7 @@
                         <p class="card-category">Saisissez les informations du nouveau migrant</p>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('home.add_migrant') }}">
+                        <form method="POST" action="{{ route('home.add_migrant') }}" id="add_migrant_form">
                             <div class="row">
                                 @csrf
                             </div>
@@ -25,7 +25,7 @@
                                         <label class="bmd-label-floating">Nom</label>
                                         <input type="text"
                                         class="form-control{{ $errors->has('nom') ? ' is-invalid' : '' }}"
-                                        name="nom" required>
+                                        name="nom" required value="{{ old('nom') }}">
                                     </div>
                                     @if ($errors->has('nom'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -38,7 +38,7 @@
                                         <label class="bmd-label-floating">Prénom</label>
                                         <input type="text"
                                         class="form-control{{ $errors->has('prenom') ? ' is-invalid' : '' }}"
-                                        name="prenom" required>
+                                        name="prenom" required value="{{ old('prenom') }}">
                                     </div>
                                     @if ($errors->has('prenom'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -53,7 +53,7 @@
                                         <label class="bmd-label-floating">N° CNI</label>
                                         <input type="text"
                                         class="form-control{{ $errors->has('cni') ? ' is-invalid' : '' }}"
-                                        name="cni" required>
+                                        name="cni">
                                     </div>
                                     @if ($errors->has('cni'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -66,7 +66,7 @@
                                         <label class="bmd-label-floating">Adresse Email</label>
                                         <input type="email"
                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                        name="email" required>
+                                        name="email" value="{{ old('email') }}">
                                     </div>
                                     @if ($errors->has('email'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -81,7 +81,7 @@
                                         <label class="bmd-label-floating">Telephone</label>
                                         <input type="text"
                                         class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}"
-                                        name="telephone" required>
+                                        name="telephone" value="{{ old('telephone') }}">
                                     </div>
                                     @if ($errors->has('telephone'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -94,7 +94,7 @@
                                         <label class="bmd-label-floating">Adresse</label>
                                         <input type="text"
                                         class="form-control{{ $errors->has('adresse') ? ' is-invalid' : '' }}"
-                                        name="adresse" required>
+                                        name="adresse" required value="{{ old('adresse') }}">
                                     </div>
                                     @if ($errors->has('adresse'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -324,7 +324,19 @@
             }, 1000);
 
           });
+      });
     });
-    });
+    </script>
+
+    <script>
+      $(document).on('submit', "#add_migrant_form", function(e){
+        var cni = $("input[name='cni']").val();
+        var tel = $("input[name='telephone']").val();
+
+        if(cni=="" && tel == ""){
+          e.preventDefault();
+          $("input[name='cni']").focus();
+        }
+      });
     </script>
 @endsection

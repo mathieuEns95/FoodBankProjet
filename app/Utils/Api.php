@@ -4,10 +4,26 @@
 namespace App\Utils;
 
 
+use App\Migrant;
 use Illuminate\Http\JsonResponse;
 
 class Api
 {
+    public static function generate_random_value($length = 60){
+        do {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+
+            $code = Migrant::where('token', $randomString)->first();
+        } while (! is_null($code));
+
+        return $randomString;
+    }
+
     public static function respond(ApiStatus $apiStatus,array $payload = [], int $httpStatus=200){
         return response()->json([
             "status" => $apiStatus->getCode(),
@@ -79,14 +95,14 @@ class Api
     /**
      * Pour ne pas avoir à ajouter les 2 things ci à chaque fois ...
      */
-    static function addApiAccess($data){
+    public static function addApiAccess($data){
         $data['api_id'] = ApiConst::api_id;
         $data['api_key'] = ApiConst::api_key;
 
         return $data;
     }
 
-    static function GETRequestApi($data,$url, $raw=false){
+    public static function GETRequestApi($data,$url, $raw=false){
 
         $curl = curl_init();
         $url = sprintf("%s?%s", $url, http_build_query($data));        

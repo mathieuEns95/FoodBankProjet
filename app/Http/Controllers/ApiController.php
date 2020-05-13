@@ -15,14 +15,15 @@ class ApiController extends Controller
 	 * Vérifie la validité du code et renvoie les infos et un token valide 
 	 */
     public function check_migrant_code($code){
-    	$migrant = Migrant::where('cni', $code)->get()[0];
+    	$migrant = Migrant::where('qr_code', $code)->get()[0];
 
     	if(is_null($migrant)){
     		return Api::respond(ApiStatus::err("Migrant not found"));
     		exit();
     	}
 
-    	$token = $this->generate_random_value();
+    	$token = Api::generate_random_value();
+        // $token = $this->generate_random_value();
     	// $token = time()+ApiConst::TOKEN_VALIDATION_TIME; // Je crée un token valide 5 minutes pour qu'il récupère son repas 
 
     	$migrant->update([
@@ -68,18 +69,5 @@ class ApiController extends Controller
     }
 
 
-    public function generate_random_value($length = 60){
-	    do {
-	    	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	    	$charactersLength = strlen($characters);
-	    	$randomString = '';
-	    	for ($i = 0; $i < $length; $i++) {
-	    		$randomString .= $characters[rand(0, $charactersLength - 1)];
-	    	}
-
-	    	$code = Migrant::where('token', $randomString)->first();
-	    } while (! is_null($code));
-
-    	return $randomString;
-    }
+    
 }

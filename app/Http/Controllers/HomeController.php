@@ -31,13 +31,19 @@ class HomeController extends Controller
     	$this->validate($request, [
     		'nom' => "required",
     		'prenom' => "required",
-    		'cni' => "required|unique:migrants",
-    		'email' => "required|email",
-    		'telephone' => "required",
+    		// 'cni' => "unique:migrants",
+    		// 'email' => "required|email",
+    		// 'telephone' => "required",
     		'adresse' => "required",
     	]);
 
+        if(!is_null($request->cni)){
+            $this->validate($request, ['cni' => "unique:migrants"]);
+        }
+
     	extract($request->all());
+
+        $unique_code = Api::generate_random_value(15);
     	$user = Migrant::create([
     		'nom' => $nom,
     		'prenom' => $prenom,
@@ -45,6 +51,7 @@ class HomeController extends Controller
     		'email' => $email,
     		'telephone' => $telephone,
     		'adresse' => $adresse,
+            'qr_code' => $unique_code,
     		'nbre_retraits' => ApiConst::NBRE_RETRAITS,
             'solvability' => 0,
     		'date_creation' => time(),
@@ -60,7 +67,22 @@ class HomeController extends Controller
 
     	// générer le pdf contenant le QR code du migrant ...
 
-    	return redirect()->route('home.show_code', ['code' => $cni]);
+    	return redirect()->route('home.show_code', ['code' => $unique_code]);
+    }
+
+    public function generate_random_value($length = 60){
+        do {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+
+            $code = Migrant::where('qr_code', $randomString)->first();
+        } while (! is_null($code));
+
+        return $randomString;
     }
 
     public function show_qr_code($code){
