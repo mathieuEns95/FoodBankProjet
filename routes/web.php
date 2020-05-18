@@ -12,7 +12,11 @@
 */
 
 Route::get('/',"HomeController@index")->name("home.index");
-Route::get('/nouveau-migrant',"HomeController@new_migrant")->name("home.new");
-Route::post('/ajouter-migrant',"HomeController@add_migrant")->name("home.add_migrant");
-Route::get('/qr-code/{code}',"HomeController@show_qr_code")->name("home.show_code");
-Route::get('/test',"HomeController@test");
+Auth::routes(['register' => false]);
+
+Route::group(['prefix' => "admin", 'middleware' => "auth"], function(){
+	Route::get('/', "AdminController@index")->name('admin.index');
+	Route::get('/nouveau-migrant',"AdminController@new_migrant")->name("migrants.new");
+	Route::post('/ajouter-migrant',"AdminController@add_migrant")->name("migrants.add_migrant");
+	Route::get('/qr-code/{code}',"AdminController@show_qr_code")->name("migrants.show_code");
+});

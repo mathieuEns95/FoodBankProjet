@@ -10,12 +10,12 @@
         <link rel="icon" type="image/png" href="{{ asset('img/vue.png') }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/some-css.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/cyrilllic.css') }}" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
