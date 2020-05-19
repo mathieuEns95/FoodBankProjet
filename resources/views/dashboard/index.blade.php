@@ -26,8 +26,9 @@
             	<td>{{ $mig->solvability }}</td>
             	<td>{{ date("d M Y", $mig->date_creation) }}</td>
             	<td>
-            		<a href="{{ route('migrants.show_code', ['code' => $mig->qr_code]) }}"><i class="pe-7s-cart"></i>View Qr Code</a>
-            		<a href="#"><i class="pe-7s-cart"></i></a>
+            		<a href="{{ route('migrants.show_code', ['code' => $mig->qr_code]) }}"><i class="fas fa-eye" label="View Qr Code"></i></i></a>
+                    <a href="{{ route('migrants.edit', ['id' => $mig->id]) }}"><i class="fas fa-edit text-success"></i></a>
+                    <a href="{{ route('migrants.delete', ['id' => $mig->id]) }}"><i class="far fa-trash-alt text-danger"></i></a>
             	</td>
             </tr>
             <?php $i++; endforeach ?>

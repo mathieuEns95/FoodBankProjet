@@ -97,4 +97,74 @@ class AdminController extends Controller
 
         return view("dashboard.qr", $data);
     }
+
+    public function delete_migrant($id){
+        $migrant = Migrant::find($id);
+
+        $migrant_to_delete = $migrant;
+
+        $migrant->delete();
+
+        Log::create([
+            'user_id' => auth()->user()->id,
+            'action' => "Suppression d'un migrant",
+            'details' => json_encode($migrant_to_delete),
+            'date_action' => time()
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function edit_migrant($id){
+        $migrant = Migrant::find($id);
+
+        if(is_null($migrant)){
+            return redirect()->route('admin.index');
+        }
+
+        $data = [
+            'title' => "Modifier les infos d'un migrant | ",
+            'migrant' => $migrant,
+        ];
+
+        return view("dashboard.edit", $data);
+    }
+
+    public function update_migrant(Request $request, $id){
+        $this->validate($request, [
+            'nom' => "required",
+            'prenom' => "required",
+            'cni' => "required",
+            'email' => "required|email",
+            'telephone' => "required",
+            'adresse' => "required",
+        ]);
+
+        $migrant = Migrant::find($id);
+
+        if(!is_null($migrant)){
+            extract($request->all());
+
+            $migrant->update([
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'cni' => $cni,
+                'email' => $email,
+                'telephone' => $telephone,
+                'adresse' => $adresse,
+                'solvability' => $solvability,
+                'date_creation' => time(),
+            ]);
+
+            Log::create([
+                'user_id' => auth()->user()->id,
+                'action' => "M.A.J d'un migrant",
+                'details' => json_encode($migrant),
+                'date_action' => time()
+            ]);
+        }
+
+
+        return redirect()->route('admin.index');
+    }
 }
