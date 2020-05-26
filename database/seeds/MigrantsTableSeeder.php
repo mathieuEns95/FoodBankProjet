@@ -23,7 +23,7 @@ class MigrantsTableSeeder extends Seeder
     		'nbre_retraits' => ApiConst::NBRE_RETRAITS,
             'solvability' => 0,
     		'date_creation' => time(),
-            // 'qr_code' => "brbrbr",
+            'qr_code' => "brbrbr",
         ]);
         Migrant::create([
         	'nom' =>"Nom 2",
@@ -35,7 +35,7 @@ class MigrantsTableSeeder extends Seeder
     		'nbre_retraits' => ApiConst::NBRE_RETRAITS,
             'solvability' => 0,
     		'date_creation' => time(),
-            // 'qr_code' => "brbrbr",
+            'qr_code' => "brbrbr",
         ]);
         Migrant::create([
             'nom' =>"Nom 3",
@@ -47,7 +47,7 @@ class MigrantsTableSeeder extends Seeder
             'nbre_retraits' => ApiConst::NBRE_RETRAITS,
             'solvability' => 5000,
             'date_creation' => time(),
-            // 'qr_code' => "brbrbr",
+            'qr_code' => "brbrbr",
         ]);
     }
 }

@@ -97,7 +97,7 @@
                           @endif
                       </div>
                   </div>
-                  <button type="submit" class="btn btn-primary pull-right">Créer migrant</button>
+                  <button type="submit" class="btn btn-success pull-right">Créer migrant</button>
                   <div class="clearfix"></div>
               </form>
           </div>

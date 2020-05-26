@@ -111,7 +111,7 @@
                           @endif
                       </div>
                   </div>
-                  <button type="submit" class="btn btn-primary pull-right">Modifier migrant</button>
+                  <button type="submit" class="btn btn-success pull-right">Modifier migrant</button>
                   <div class="clearfix"></div>
               </form>
           </div>

@@ -20,21 +20,21 @@
 
 <body class="bg-secondary">
   <!-- Navbar -->
-  
+
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->
-    <div class="header bg-blue py-5 py-lg-6 pt-lg-7">
+    <div class="header bg-green py-5 py-lg-6 pt-lg-7">
       <div class="container">
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <h1 class="text-white">Sign into your account!</h1>
+              <h1 class="text-white">ABL FOOD BANK</h1>
             </div>
           </div>
         </div>
       </div>
-      
+
     </div>
     <!-- Page content -->
     <div class="container mt--8 pb-5 ">
@@ -71,7 +71,7 @@
                   @endif
                 </div>
                 <div class="text-center">
-                  <input type="submit" class="btn-block btn btn-primary my-4" value="LOGIN">
+                  <input type="submit" class="btn-block btn btn-success my-4" value="LOGIN">
                 </div>
               </form>
             </div>
@@ -80,7 +80,7 @@
       </div>
     </div>
   </div>
-  
+
   <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
   <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('vendor/js-cookie/js.cookie.js') }}"></script>

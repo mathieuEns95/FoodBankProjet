@@ -29,7 +29,7 @@
 
           <!-- Navbar links -->
 
-          
+
           <ul class="navbar-nav align-items-center  ml-md-auto ">
             <li class="nav-item"><a class="text-white" href="{{ route('admin.index') }}">Dashboard</a></li>
             <li class="nav-item dropdown">
@@ -60,7 +60,7 @@
       <div class="container-fluid" style="margin-top: -30px;">
         <div class="header-body">
           <hr class="bg-white">
-          
+
           <!-- Card stats -->
           <div class="row">
             <div class="col-xl-6 col-md-6">
