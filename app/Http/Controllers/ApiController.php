@@ -37,7 +37,11 @@ class ApiController extends Controller
     		'food' => ($migrant->nbre_retraits > 0) ? true : false,
     	];
 
-    	return Api::respond(ApiStatus::ok("Well Done"), $data);
+        return response()->json([
+            "migrant" => $migrant
+        ],200);
+
+    	// return Api::respond(ApiStatus::ok("Well Done"), $data);
     }
 
     public function give_food($token){
