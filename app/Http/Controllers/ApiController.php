@@ -38,7 +38,7 @@ class ApiController extends Controller
     	];
 
         return response()->json([
-            "migrant" => $migrant
+            $migrant
         ],200);
 
     	// return Api::respond(ApiStatus::ok("Well Done"), $data);
