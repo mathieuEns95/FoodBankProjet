@@ -18,7 +18,12 @@ class ApiController extends Controller
     	$migrant = Migrant::where('qr_code', $code)->get()[0];
 
     	if(is_null($migrant)){
-    		return Api::respond(ApiStatus::err("Migrant not found"));
+            $data = [
+                'statut' => "ok",
+                'message' => "Migrant not found",
+            ];
+            return json_encode($data);
+    		// return Api::respond(ApiStatus::err("Migrant not found"));
     		exit();
     	}
 
@@ -32,14 +37,13 @@ class ApiController extends Controller
     	$migrant->save();
 
     	$data = [
+            'status' => "ok",
     		'token' => $token,
     		'migrant' => $migrant,
     		'food' => ($migrant->nbre_retraits > 0) ? true : false,
     	];
 
-        return response()->json([
-            $migrant
-        ],200);
+        return json_encode($data);
 
     	// return Api::respond(ApiStatus::ok("Well Done"), $data);
     }
@@ -48,7 +52,13 @@ class ApiController extends Controller
     	$migrant = Migrant::where('token', $token)->first();
 
     	if(is_null($migrant)){
-    		return Api::respond(ApiStatus::err("Migrant not found"));
+            $data = [
+                'statut' => "ok",
+                'message' => "Migrant not found",
+            ];
+
+            return json_encode($data);
+    		// return Api::respond(ApiStatus::err("Migrant not found"));
     		exit();
     	}
 
@@ -65,11 +75,13 @@ class ApiController extends Controller
     	]);
 
     	$data = [
+            'statut' => "ok",
     		'date_retrait' => date("H:i d M Y", time()),
     		'nbre_retraits_restant' => $migrant->nbre_retraits,
     	];
 
-    	return Api::respond(ApiStatus::ok("Retrait effectué avec succès. Bon appétit !"), $data);
+        return json_encode($data);
+    	// return Api::respond(ApiStatus::ok("Retrait effectué avec succès. Bon appétit !"), $data);
     }
 
 
