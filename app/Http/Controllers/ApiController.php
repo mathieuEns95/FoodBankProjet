@@ -19,6 +19,7 @@ class ApiController extends Controller
 	 */
     public function check_migrant_code($code){
     	$migrant = Migrant::where('qr_code', $code)->get()[0];
+         // Bon je quitte anydesk ... tu rebuild ton apk et tu testes ... ok a
 
     	if(is_null($migrant)){
             $data = [
@@ -27,6 +28,8 @@ class ApiController extends Controller
             ];
             return json_encode($data);
     		// return Api::respond(ApiStatus::err("Migrant not found"));
+            // essaye de diviser la data quitte a envoyer juste le migrant en question voir...
+            // hallo.....
     		exit();
     	}
 
@@ -47,7 +50,6 @@ class ApiController extends Controller
     	];
 
         return json_encode($migrant);
-
     	// return Api::respond(ApiStatus::ok("Well Done"), $data);
     }
 
