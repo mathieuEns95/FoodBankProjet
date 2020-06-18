@@ -9,7 +9,7 @@ Route::group(['prefix' => "admin", 'middleware' => "auth"], function(){
 	Route::post('/ajouter-migrant',"AdminController@add_migrant")->name("migrants.add_migrant");
 	Route::get('/qr-code/{code}',"AdminController@show_qr_code")->name("migrants.show_code");
 
-	Route::get('/migrants/edit/{id}',"AdminController@edit_migrant")->name("migrants.edit");
+    Route::get('/migrants/edit/{id}',"AdminController@edit_migrant")->name("migrants.edit");
 	Route::post('/migrants/update/{id}',"AdminController@update_migrant")->name("migrants.update");
 	Route::get('/migrants/delete/{id}',"AdminController@delete_migrant")->name("migrants.delete");
 });

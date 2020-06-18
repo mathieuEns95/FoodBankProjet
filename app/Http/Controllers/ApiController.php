@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
+    public function get_all_migrants(){
+        return json_encode(Migrant::all());
+    }
 	/**
 	 * Vérifie la validité du code et renvoie les infos et un token valide 
 	 */
@@ -43,7 +46,7 @@ class ApiController extends Controller
     		'food' => ($migrant->nbre_retraits > 0) ? true : false,
     	];
 
-        return json_encode($data);
+        return json_encode($migrant);
 
     	// return Api::respond(ApiStatus::ok("Well Done"), $data);
     }
