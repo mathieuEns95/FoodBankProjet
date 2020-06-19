@@ -12,7 +12,9 @@ use Illuminate\Http\Request;
 class ApiController extends Controller
 {
     public function get_all_migrants(){
-        return json_encode(Migrant::all());
+        return response()->json(Migrant::all());
+        
+        // return json_encode(Migrant::all());
     }
 	/**
 	 * Vérifie la validité du code et renvoie les infos et un token valide 
