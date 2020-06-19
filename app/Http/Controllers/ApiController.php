@@ -28,14 +28,11 @@ class ApiController extends Controller
             ];
             return json_encode($data);
     		// return Api::respond(ApiStatus::err("Migrant not found"));
-            // essaye de diviser la data quitte a envoyer juste le migrant en question voir...
-            // hallo.....
+
     		exit();
     	}
 
     	$token = Api::generate_random_value();
-        // $token = $this->generate_random_value();
-    	// $token = time()+ApiConst::TOKEN_VALIDATION_TIME; // Je crée un token valide 5 minutes pour qu'il récupère son repas 
 
     	$migrant->update([
     		'token' => $token,
