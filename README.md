@@ -14,8 +14,13 @@ Modification 1 du projet
 - Le projet ne sera pas en local nous devons envoyer dans un serveur
         Pour realiser ceci nous devons inviter Francis dans la realisation parceque c'est lui
     qui gere le serveur.
+<<<<<<< HEAD
 
 Modification 2 du projet
+=======
+ 
+ Modification 2 du projet
+>>>>>>> 9c18dd04c1497066b984cbc5f59033cdc125f6ce
 
 ================================= information du migrant ============================
 nom et prenom *
@@ -40,5 +45,8 @@ savoir le nombre de fois qu'un individus a pris
  NB : deux ou plusieurs personnes peuvent avoir le meme numero de telephone 
 
 nom de domaine : balimsfax
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9c18dd04c1497066b984cbc5f59033cdc125f6ce

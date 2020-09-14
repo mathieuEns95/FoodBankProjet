@@ -27,35 +27,55 @@ class AdminController extends Controller
         return view("dashboard.new", $data);
     }
 
+    public static function get_qrcode($id){
+        $supplements = [ "0000", "000", "00", "0", "" ];
+
+        return "TSF". @$supplements[strlen($id)]."$id";
+    }
+
     public function add_migrant(Request $request){
+
         $this->validate($request, [
             'nom' => "required",
             'prenom' => "required",
-            // 'cni' => "unique:migrants",
-            // 'email' => "required|email",
-            // 'telephone' => "required",
+            'pays' => "required",
+            'date_of_birth' => "required",
+            'passeport' => "required",
+            'email' => "required",
+            'profession' => "required",
             'adresse' => "required",
+            'nbre_coloc' => "required",
+            'telephone' => "required"
         ]);
 
         if(!is_null($request->cni)){
-            $this->validate($request, ['cni' => "unique:migrants"]);
+            $this->validate($request, ['passeport' => "unique:migrants"]);
         }
 
         extract($request->all());
 
-        $unique_code = Api::generate_random_value(15);
         $user = Migrant::create([
             'nom' => $nom,
             'prenom' => $prenom,
-            'cni' => $cni,
+            'pays' => $pays,
+            'date_naissance' => $date_of_birth,
+            'passeport' => $passeport,
             'email' => $email,
-            'telephone' => $telephone,
+            'profession' => $profession,
             'adresse' => $adresse,
-            'qr_code' => $unique_code,
+            'nbre_coloc' => $nbre_coloc,
+            'nbre_enfants' => $nbre_enfants,
+            'telephone' => $telephone,
             'nbre_retraits' => ApiConst::NBRE_RETRAITS,
             'solvability' => 0,
             'date_creation' => time(),
         ]);
+
+
+        $unique_code = self::get_qrcode($user->id);
+        
+        $user->qr_code = $unique_code;
+        $user->save();
 
 
         Log::create([

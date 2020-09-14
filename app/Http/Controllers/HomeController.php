@@ -19,6 +19,14 @@ class HomeController extends Controller
     	return view("index", $data);
     }
 
+    public function new_migrant(){
+        $data = [
+            'title' => "Enregistrement d'un migrant | ",
+        ];
+
+        return view("new_migrant", $data);
+    }
+
     public function test()
     {
 
