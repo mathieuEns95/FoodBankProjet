@@ -15,17 +15,21 @@ class CreateMigrantsTable extends Migration
     {
         Schema::create('migrants', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("cni")->nullable();
-            $table->string("nom");
-            $table->string("email")->nullable();
-            $table->string("prenom");
-            $table->string("telephone")->nullable();
-            $table->string("adresse");
-            $table->string("qr_code");
-            $table->integer("nbre_retraits");
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('pays');
+            $table->string('date_naissance');
+            $table->string('passeport')->unique();
+            $table->string('profession');
+            $table->string('adresse');
+            $table->integer('nbre_coloc');
+            $table->integer('nbre_enfants');
+            $table->string('telephone');
+            $table->string("qr_code")->nullable();
             $table->integer("solvability");
-            $table->string("date_creation");
             $table->string("token")->nullable();
+            $table->string('email')->unique();
+            $table->string("date_creation");
             $table->timestamps();
         });
     }

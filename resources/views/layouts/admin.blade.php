@@ -17,6 +17,7 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{ asset('css/argon.css?v=1.2.0') }}" type="text/css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" type="text/css">
 </head>
 
 <body class="bg-blue">
@@ -31,8 +32,10 @@
 
 
           <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item mr-3"><a class="text-white" href="{{ route('home.index') }}">Accueil</a></li>
+            @if(auth()->user())
             <li class="nav-item"><a class="text-white" href="{{ route('admin.index') }}">Dashboard</a></li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown mr-3">
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 <div class="media align-items-center">
@@ -50,6 +53,10 @@
                 </a>
               </div>
             </li>
+            @else
+            <li class="nav-item mr-3"><a  class="text-white" href="{{ route('login') }}">Login</a></li>
+            @endif
+            <li class="nav-item"><a class="text-white" href="{{ route('migrants.new') }}">Enregistrer un migrant</a></li>
           </ul>
         </div>
       </div>
@@ -60,8 +67,7 @@
       <div class="container-fluid" style="margin-top: -30px;">
         <div class="header-body">
           <hr class="bg-white">
-
-          <!-- Card stats -->
+          @if(auth()->user())
           <div class="row">
             <div class="col-xl-6 col-md-6">
               <div class="card card-stats">
@@ -106,6 +112,7 @@
               </div>
             </div>
           </div>
+          @endif
           <div class="row">
             <div class="col-xl-12 col-md-12">
               <div class="card card-stats">
@@ -130,6 +137,13 @@
   <script src="{{ asset('vendor/chart.js/dist/Chart.extension.js') }}"></script>
   <!-- Argon JS -->
   <script src="{{ asset('js/argon.js?v=1.2.0') }}"></script>
+  <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+  <script>
+    $(document).ready( function () {
+      $('#bootstrap-data-table').DataTable();
+    } );
+  </script>
   @yield('js')
 </body>
 
