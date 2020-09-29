@@ -32,8 +32,6 @@ class ApiController extends Controller
     	}
 
     	$token = Api::generate_random_value();
-        // $token = $this->generate_random_value();
-    	// $token = time()+ApiConst::TOKEN_VALIDATION_TIME; // Je crée un token valide 5 minutes pour qu'il récupère son repas 
 
     	$migrant->update([
     		'token' => $token,
@@ -47,7 +45,7 @@ class ApiController extends Controller
     		'food' => ($migrant->nbre_retraits > 0) ? true : false,
     	];
 
-        return json_encode($migrant);
+        return response()->json($migrant);
     	// return Api::respond(ApiStatus::ok("Well Done"), $data);
     }
 
