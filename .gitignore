@@ -1,3 +1,5 @@
+/.scannerwork
+*/.scannerwork/*
 /node_modules
 /public/hot
 /public/storage

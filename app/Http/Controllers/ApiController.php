@@ -29,10 +29,6 @@ class ApiController extends Controller
                 'message' => "Migrant not found",
             ];
             return json_encode($data);
-    		// return Api::respond(ApiStatus::err("Migrant not found"));
-            // essaye de diviser la data quitte a envoyer juste le migrant en question voir...
-            // hallo.....
-    		exit();
     	}
 
     	$token = Api::generate_random_value();
@@ -66,7 +62,6 @@ class ApiController extends Controller
 
             return json_encode($data);
     		// return Api::respond(ApiStatus::err("Migrant not found"));
-    		exit();
     	}
 
     	$migrant->update([

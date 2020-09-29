@@ -79,7 +79,6 @@ class Api
 
         if($raw){
             return $data;
-            exit();
         }
 
         $response = json_decode($data, true);
