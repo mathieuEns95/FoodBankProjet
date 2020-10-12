@@ -27,6 +27,7 @@ class CreateMigrantsTable extends Migration
             $table->string('telephone');
             $table->string("qr_code")->nullable();
             $table->integer("solvability");
+            $table->integer("nbre_retraits")->default(12);
             $table->string("token")->nullable();
             $table->string('email')->unique();
             $table->string("date_creation");

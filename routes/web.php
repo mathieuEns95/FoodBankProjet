@@ -13,4 +13,6 @@ Route::group(['prefix' => "admin", 'middleware' => "auth"], function(){
     Route::get('/migrants/edit/{id}',"AdminController@edit_migrant")->name("migrants.edit");
 	Route::post('/migrants/update/{id}',"AdminController@update_migrant")->name("migrants.update");
 	Route::get('/migrants/delete/{id}',"AdminController@delete_migrant")->name("migrants.delete");
+
+	Route::get('/statistiques',"AdminController@statistiques")->name("statistiques");
 });

@@ -34,7 +34,8 @@
           <ul class="navbar-nav align-items-center  ml-md-auto ">
             <li class="nav-item mr-3"><a class="text-white" href="{{ route('home.index') }}">Accueil</a></li>
             @if(auth()->user())
-            <li class="nav-item"><a class="text-white" href="{{ route('admin.index') }}">Dashboard</a></li>
+            <li class="nav-item mr-3"><a class="text-white" href="{{ route('admin.index') }}">Dashboard</a></li>
+            <li class="nav-item"><a class="text-white" href="{{ route('statistiques') }}">Statistiques</a></li>
             <li class="nav-item dropdown mr-3">
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
@@ -142,6 +143,7 @@
   <script>
     $(document).ready( function () {
       $('#bootstrap-data-table').DataTable();
+      $('.bootstrap-data-table').DataTable();
     } );
   </script>
   @yield('js')
