@@ -46,5 +46,23 @@
                 </tr>
             </tfoot>
         </table>
+
+</div>
+<div class="card-body" style="background: green; color: white">
+     <p>VOILA ICI</p>
+     <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Age</th>
+      <th scope="col">Nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 @endsection
