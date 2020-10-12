@@ -47,8 +47,4 @@
         </tfoot>
     </table>
 </div>
-<div class="card-body" style="background: green; color: white">
-
-
-</div>
 @endsection
