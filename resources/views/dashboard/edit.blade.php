@@ -46,7 +46,7 @@
                               <label class="bmd-label-floating">N° CNI</label>
                               <input type="text"
                               class="form-control{{ $errors->has('cni') ? ' is-invalid' : '' }}"
-                              name="cni" value="{{ $migrant->cni }}">
+                              name="cni" value="{{ $migrant->passeport }}">
                           </div>
                           @if ($errors->has('cni'))
                           <span class="invalid-feedback" style="display: block;" role="alert">

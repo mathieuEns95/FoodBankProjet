@@ -119,8 +119,12 @@ class AdminController extends Controller
         return view("dashboard.qr", $data);
     }
 
-    public function delete_migrant($id){
-        $migrant = Migrant::find($id);
+    public function delete_migrant(Request $request){
+        $this->validate($request, [
+            'migrant_id' => "required|integer",
+        ]);
+
+        $migrant = Migrant::find($request->migrant_id);
 
         $migrant_to_delete = $migrant;
 
@@ -169,7 +173,7 @@ class AdminController extends Controller
             $migrant->update([
                 'nom' => $nom,
                 'prenom' => $prenom,
-                'cni' => $cni,
+                'passeport' => $cni,
                 'email' => $email,
                 'telephone' => $telephone,
                 'adresse' => $adresse,
