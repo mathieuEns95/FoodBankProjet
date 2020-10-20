@@ -1,7 +1,6 @@
 <?php
 
 Route::get('/',"HomeController@index")->name("home.index");
-// Route::get('/nouveau-migrant',"HomeController@new_migrant")->name("home.new");
 Route::get('/nouveau-migrant',"AdminController@new_migrant")->name("migrants.new");
 Route::post('/ajouter-migrant',"AdminController@add_migrant")->name("migrants.add_migrant");
 Route::get('/qr-code/{code}',"AdminController@show_qr_code")->name("migrants.show_code");
