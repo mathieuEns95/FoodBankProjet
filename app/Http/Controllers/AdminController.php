@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Log;
 use App\Migrant;
 use App\Utils\Api;
@@ -13,7 +14,7 @@ class AdminController extends Controller
     public function index(){
     	$data = [
     		'title' => "Admin Side | ",
-            'migrants' => Migrant::all(),
+            'migrants' => Migrant::all()
     	];
 
     	return view("dashboard.index", $data);
@@ -118,8 +119,12 @@ class AdminController extends Controller
         return view("dashboard.qr", $data);
     }
 
-    public function delete_migrant($id){
-        $migrant = Migrant::find($id);
+    public function delete_migrant(Request $request){
+        $this->validate($request, [
+            'migrant_id' => "required|integer",
+        ]);
+
+        $migrant = Migrant::find($request->migrant_id);
 
         $migrant_to_delete = $migrant;
 
@@ -168,7 +173,7 @@ class AdminController extends Controller
             $migrant->update([
                 'nom' => $nom,
                 'prenom' => $prenom,
-                'cni' => $cni,
+                'passeport' => $cni,
                 'email' => $email,
                 'telephone' => $telephone,
                 'adresse' => $adresse,
@@ -186,5 +191,41 @@ class AdminController extends Controller
 
 
         return redirect()->route('admin.index');
+    }
+
+    public function statistiques(){
+        $stats_per_age = DB::table("migrants")
+                    ->select(DB::raw("count(*) as nbre, date_format(date_naissance, '%Y%') as annee"))
+                    ->groupBy("annee")
+                    ->orderBy("annee", "DESC")
+                    ->get();
+
+        $stats_per_country = DB::table("migrants")
+                    ->select(DB::raw("count(*) as nbre, pays"))
+                    ->groupBy("pays")
+                    ->orderBy("pays", "DESC")
+                    ->get();
+
+        $stats_per_profession = DB::table("migrants")
+                    ->select(DB::raw("count(*) as nbre, profession"))
+                    ->groupBy("profession")
+                    ->orderBy("profession", "DESC")
+                    ->get();
+
+        $stats_per_adresse = DB::table("migrants")
+                    ->select(DB::raw("count(*) as nbre, adresse"))
+                    ->groupBy("adresse")
+                    ->orderBy("adresse", "DESC")
+                    ->get();
+
+        $data = [
+            'title' => "statistiques | ",
+            'stats_per_age' => $stats_per_age,
+            'stats_per_country' => $stats_per_country,
+            'stats_per_profession' => $stats_per_profession,
+            'stats_per_adresse' => $stats_per_adresse,
+        ];
+
+        return view("dashboard.statistiques", $data);
     }
 }
